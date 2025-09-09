@@ -1,0 +1,23 @@
+video:
+  batch_size: 30
+  output_fps: 15
+  codec: "libx264"
+  container: "mp4"
+  segment_prefix: "segment_"
+processing:
+  midas_model: "MiDaS_small"  # DPT_Large, DPT_Hybrid, MiDaS_small
+  max_shift: 30
+  field_of_view: 150
+paths:
+  tmp_dir: "${TMP_DIR:./tmp}"
+  frames_dir: "${TMP_DIR:./tmp}/frames"
+  depth_dir: "${TMP_DIR:./tmp}/depth"
+  left_dir: "${TMP_DIR:./tmp}/left"
+  right_dir: "${TMP_DIR:./tmp}/right"
+  vr_left: "${TMP_DIR:./tmp}/vr_left"
+  vr_right: "${TMP_DIR:./tmp}/vr_right"
+  stereo_dir: "${TMP_DIR:./tmp}/stereo_combined"
+  segments_dir: "${OUTPUT_DIR:./output}/segments"
+  final_output: "${OUTPUT_DIR:./output}/final_output.mp4"
+ffmpeg:
+  bitrate: "6M"

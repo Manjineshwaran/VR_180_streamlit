@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: vr180-backend
+    env: python
+    plan: starter
+    buildCommand: |
+      pip install -r requirements.txt
+      python -c "from src.midas_depth import Midas, ModelType; Midas(ModelType.MIDAS_SMALL)"
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONPATH
+        value: /opt/render/project/src/backend
+      - key: PORT
+        value: 10000
+      - key: TMP_DIR
+        value: /opt/render/project/src/backend/storage/tmp
+      - key: OUTPUT_DIR
+        value: /opt/render/project/src/backend/storage/output
+      - key: STORAGE_DIR
+        value: /opt/render/project/src/backend/storage
+    disk:
+      name: vr180-storage
+      mountPath: /opt/render/project/src/backend/storage
+      sizeGB: 10

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pkl
+.env
+.vscode/
+data/
+outputs/
+*.mp4
+*.avi
+*.mov
+*.log
